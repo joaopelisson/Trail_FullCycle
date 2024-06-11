@@ -12,3 +12,16 @@
 Exemplo: `docker run -it --rm ubuntu bash`
 
 - `--rm`: Todo processo de container que subir, na hora que ele "sair", você já remove automaticamente.
+
+Redirecionando a porte quando vou rodar um container, exemplo:
+`docker run -p 8080:80 nginx`
+
+Agora se eu abrir: `http://localhost:8080/`
+
+<img src="./welcomeToNginx.png" />
+
+Se caso o container "prenda" seu terminal após o `-run` você pode executar:
+
+`docker run -d -p 80:80 nginx`
+
+Pois quando rodamos `-d` (detached mode) estamos evitando que o terminal fique preso na execução

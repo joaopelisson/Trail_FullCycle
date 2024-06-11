@@ -12,3 +12,16 @@
 Example: `docker run -it --rm ubuntu bash`
 
 - `--rm`: Automatically removes the container once it exits.
+
+Redirecting the port when I'm going to run a container, example:
+`docker run -p 8080:80 nginx`
+
+Now if I open: `http://localhost:8080/`
+
+<img src="./welcomeToNginx.png" />
+
+If the container "locks" your terminal after `-run`, you can execute:
+
+`docker run -d -p 80:80 nginx`
+
+Because when we run `-d` (detached mode), we are preventing the terminal from getting stuck in execution.
