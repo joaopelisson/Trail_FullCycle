@@ -68,7 +68,7 @@ obs: ele iniciou em modo de leitura, para entrar em modo de edição, é necess�
 Digamos que eu editei já o que queria, e agora, como eu saio? `ESC` e ele vai sair do modo `INSERT` e para salvar `SHIFT`+`:` e digito `w` (W = Write) e pronto, ele gravou nosso arquivo!
 
 Agora eu volto para minha pagina:
-<img src="/welcomeToNginx2.png" />
+<img src="./welcomeToNginx2.png" />
 
 Ou seja, eu editei um arquivo que esta dentro do meu container.
 
