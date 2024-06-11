@@ -25,3 +25,9 @@ Se caso o container "prenda" seu terminal após o `-run` você pode executar:
 `docker run -d -p 80:80 nginx`
 
 Pois quando rodamos `-d` (detached mode) estamos evitando que o terminal fique preso na execução
+
+Caso precise remover um container, basta executar:
+`docker rm {ContainerId Ou Name}` -> `docker rm 133601884b1b` ou `docker rm blissful_jepsen` 
+
+ou remover e matar
+`docker rm {name ou id} -f`
