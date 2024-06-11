@@ -31,3 +31,53 @@ If you need to remove a container, just execute:
 
 or to remove and kill
 `docker rm {name or id} -f`
+## Accessing and modifying files in a container
+
+What if I want to enter my `nginx` container? (which is already running)
+
+We can use `docker exec`, it executes a command in our `container`
+
+Example: `docker exec nginx ls` 
+
+If you want to access `bash`: `docker exec -it nginx bash`
+
+I can navigate normally after:
+
+```bash
+joaopelisson@NOTE-JOAO:/mnt/Develop/Trail_FullCycle$ docker exec -it nginx bash
+root@1df50eed56af:/# cd /usr/share/nginx/html/
+root@1df50eed56af:/usr/share/nginx/html# ls
+50x.html  index.html
+root@1df50eed56af:/usr/share/nginx/html#
+```
+And if I want to edit `index.html`? Let's use `vim`!
+
+For this, we will install `vim` if we don't have it: 
+
+```bash
+apt-get update
+apt-get install vim
+```
+
+After successful installation, just execute: `vim index.html`
+
+<img src="./vim1.png" alt="Vim" />
+
+Note: it started in read mode, to enter edit mode, you need to type `i` which will change to `INSERT` mode
+
+Let's say I've already edited what I wanted, and now, how do I exit? `ESC` and it will exit `INSERT` mode and to save `SHIFT`+`:` and type `w` (W = Write) and done, it saved our file!
+
+Now I go back to my page:
+<img src="./welcomeToNginx2.png" />
+
+That is, I edited a file that is inside my container.
+
+And now, how do I exit `vim`? Just type `:` `Q` (Q = Quit)
+and done:
+
+```bash
+root@1df50eed56af:/usr/share/nginx/html# vim index.html
+root@1df50eed56af:/usr/share/nginx/html#
+```
+
+Note: our container is always immutable - that is, if my container dies, this change I made will go away (the moment it dies)
