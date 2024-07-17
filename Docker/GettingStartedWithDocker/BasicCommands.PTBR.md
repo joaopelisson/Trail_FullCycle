@@ -104,3 +104,21 @@ Ou seja:
 ```bash
 docker run -d --name nginx -p 8080:80 --mount type=bind,source="$(pwd)"/Docker/UtilitiesForExample/,target=/usr/share/nginx/html nginx
 ```
+
+---
+
+### Trabalhando com volumes
+
+Ao rodar `docker volume` ele me lista alguams ações que posso fazer, por exemplo:
+
+```bash
+docker volume ls
+```
+
+Criando um volume:
+
+```bash
+docker volume create nomedovolume
+```
+
+após isso, ao rodar o `ls` vejo o volume criado, podendo rodar um `docker volume inspect nomedovolume` para ter mais detalhes como `mountpoint, drivers, etc`.
