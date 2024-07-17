@@ -81,3 +81,25 @@ root@1df50eed56af:/usr/share/nginx/html#
 ```
 
 Note: our container is always immutable - that is, if my container dies, this change I made will go away (the moment it dies)
+
+---
+
+### Bind Mounts
+
+Basically, I mount a volume from my computer into the container.
+
+This way, if the container dies, the file is still on my computer.
+
+When running:
+```bash
+docker run -d --name nginx -p 8080:80 -v ~/Docker/UtilitiesForExample/:/usr/share/nginx/html nginx
+```
+By using `-v`, I am specifying that I want to mount a volume and then the path. After the `/:/`, I am indicating where I want to store it inside the container.
+
+_Note: the `-v` command is an "old" command, the current command is `--mount`
+
+In other words:
+
+```bash
+docker run -d --name nginx -p 8080:80 --mount type=bind,source="$(pwd)"/Docker/UtilitiesForExample/,target=/usr/share/nginx/html nginx
+```

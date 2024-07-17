@@ -81,3 +81,26 @@ root@1df50eed56af:/usr/share/nginx/html#
 ```
 
 Observação: nosso container é sempre imutavel - ou seja, se meu container morrer, essa minha alteração, vai embora (no momento que ele morre)
+
+---
+
+### Bind mounts
+
+Básicamente eu monto um volume do meu computador, para dentro do container.
+
+Dessa forma, se o container morrer, o arquivo ainda esta dentro do meu computador.
+
+Ao rodar: 
+```bash
+docker run -d --name nginx -p 8080:80 -v ~/Docker/UtilitiesForExample/:/usr/share/nginx/html nginx
+```
+Ao utilizar o `-v` eu estou dizendo que vou montar um volume e em seguida o caminho.
+após o `/:/` estou dizendo que quero guardar no caminho que vem em seguida do comando.
+
+_Obs: o comando `-v` é um comando "antigo", o comando atual é `--mount`
+
+Ou seja:
+
+```bash
+docker run -d --name nginx -p 8080:80 --mount type=bind,source="$(pwd)"/Docker/UtilitiesForExample/,target=/usr/share/nginx/html nginx
+```
